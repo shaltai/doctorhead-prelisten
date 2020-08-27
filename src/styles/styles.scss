@@ -55,9 +55,7 @@ img {
 .lnd-container {
 	max-width: 1170px;
 	margin: 0 auto;
-	@media (max-width: 1024px) {
-		// max-width: calc(100% -3rem);
-	}
+	padding: 0 2.5rem;
 }
 
 .page-container > .box {
@@ -66,16 +64,4 @@ img {
 	}
 }
 
-@import 'hero';
-
-@import 'services';
-
-@import 'description';
-
-@import 'features';
-
-@import 'form-banner';
-
-@import 'testimonials';
-
-@import 'contacts';
+// @import 'hero';
