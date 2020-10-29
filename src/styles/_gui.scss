@@ -20,8 +20,10 @@ $radius: 0.3rem;
 
 %heading {
 	line-height: 1.2;
-	font-weight: 900;
+	font-weight: 700;
+	text-align: left;
 
+	// Heading size
 	&_level_1 {
 		@extend %heading;
 		font-size: 6rem;
@@ -103,6 +105,26 @@ $radius: 0.3rem;
 		}
 	}
 
+	&_level_5 {
+		@extend %heading;
+		font-size: 2rem;
+		letter-spacing: -0.02rem;
+
+		@media (max-width: 768px) {
+			font-size: 1.9rem;
+		}
+		@media (max-width: 414px) {
+			font-size: 1.8rem;
+		}
+		@media (max-width: 375px) {
+			font-size: 1.6rem;
+		}
+		@media (max-width: 320px) {
+			font-size: 1.4rem;
+		}
+	}
+
+	// Heading color
 	&_light {
 		@extend %heading;
 		color: $color-grey-lightest;
@@ -117,6 +139,15 @@ $radius: 0.3rem;
 		@extend %heading;
 		color: transparent;
 		border: 1px solid $color-grey-darkest;
+	}
+
+	// Heading position
+	&_center {
+		text-align: center;
+	}
+
+	&_right {
+		text-align: right;
 	}
 }
 
@@ -232,7 +263,7 @@ $radius: 0.3rem;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	padding: 1.6rem 4rem;
+	padding: 1.4rem 4rem;
 	font-weight: 600;
 	font-size: 1.8rem;
 	line-height: 1;
@@ -241,6 +272,7 @@ $radius: 0.3rem;
 	background: transparent;
 	cursor: pointer;
 	text-align: center;
+	hyphens: none;
 
 	@media (max-width: 768px) {
 		padding: 1.65rem 3rem;
@@ -249,7 +281,7 @@ $radius: 0.3rem;
 	&_primary {
 		@extend %button;
 		color: white;
-		border: none;
+		border: $color-primary 0.2rem solid;
 		background-color: $color-primary;
 
 		&_outline {
@@ -353,26 +385,29 @@ $radius: 0.3rem;
 
 // Inputs
 
-input.lnd-input {
+%lnd-input {
 	height: 5rem;
 	font-size: 1.5rem;
 	line-height: 1;
 	border: none;
 }
 
+// Text input
+
 input[type='text'].lnd-input {
+	@extend %lnd-input;
 	padding-top: 1rem;
 	padding-bottom: 1rem;
 	background-color: transparent;
 
 	&_dark {
-		color: $color-grey-dark;
-		border-bottom: 0.2rem solid $color-grey-dark;
+		color: $color-grey;
+		border-bottom: 0.2rem solid $color-grey-light;
 	}
 
 	&_light {
 		color: $color-grey-light;
-		border-bottom: 0.2rem solid $color-grey-light;
+		border-bottom: 0.2rem solid $color-grey-lightest;
 	}
 }
 
@@ -408,8 +443,113 @@ input[type='submit'] {
 	cursor: pointer;
 }
 
-// input[type='submit']:hover {
-// 	background-color: $color-primary;
-// 	box-shadow: 0 1rem 1rem rgba(0, 115, 168, 0.24), 0 0 1rem rgba(0, 115, 168, 0.12);
-// 	transition: all 0.5s ease-out;
+// Checkboxes and Radiobuttons
+
+input[type='radio'].lnd-input {
+	appearance: none;
+}
+
+// Radio button styles
+.lnd-radiomark {
+	top: 0;
+	left: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	border-radius: 50%;
+
+	&::before {
+		content: '';
+		top: 0rem;
+		left: 0rem;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 50%;
+		box-shadow: 0 0 0 0.2rem $color-grey;
+	}
+	&:hover ~ &::after {
+		box-shadow: 0 0 0 0.2rem $color-grey-dark;
+		transition: box-shadow 0.5s ease-out;
+	}
+}
+
+// &__input:focus ~ &__radiomark::after {
+// 	box-shadow: 0 0 0 0.2rem $color-grey-light;
 // }
+
+// Checkboxes styles
+
+.lnd-check {
+	&__label {
+		@extend %text_regular;
+		@extend %text_dark;
+		padding-left: 2rem;
+	}
+
+	&__input {
+		appearance: none;
+	}
+
+	&__mark {
+		position: absolute;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 0.05rem;
+		margin-top: 0.3rem;
+		margin-left: -2rem;
+		box-shadow: 0 0 0 0.2rem $color-grey;
+
+		&:hover {
+			box-shadow: 0 0 0 0.2rem $color-primary;
+			transition: box-shadow 0.5s ease-out;
+		}
+	}
+
+	&__input:focus + &__mark {
+		box-shadow: 0 0 0 0.2rem $color-grey, 0 0 0 0.4rem $color-grey-light;
+		transition: box-shadow 0.33s ease-out;
+	}
+
+	&__input:checked + &__mark {
+		box-shadow: 0 0 0 0.2rem $color-primary;
+		background-color: $color-primary;
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='11px' height='9px' viewBox='0 0 11 9' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EPath%3C/title%3E%3Cg id='Home' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline id='Path' stroke='%23FFFFFF' stroke-width='2' fill-rule='nonzero' points='1 5.05 3.88 7.8 10 1.8'%3E%3C/polyline%3E%3C/g%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		transition: background-color 0.33s ease-out;
+	}
+}
+
+// Selects
+
+%lnd-select {
+	appearance: none;
+	width: 100%;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='8px' height='5px' viewBox='0 0 8 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3Eicon-dropdown_closed%3C/title%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M4.45139817,4.80033431 L7.87330218,0.864267921 C8.07274715,0.634855111 8.03232662,0.300098621 7.78302042,0.116568373 C7.68051835,0.0411100379 7.55316007,0 7.42189337,0 L0.578085343,0 C0.258817624,0 0,0.238165266 0,0.531957011 C0,0.652749285 0.04467487,0.769945002 0.126676529,0.864267921 L3.54858054,4.80033431 C3.74802551,5.02974712 4.1118102,5.06694229 4.36111641,4.88341204 C4.39445153,4.85887192 4.42473007,4.83100945 4.45139817,4.80033431 Z' id='icon-dropdown_closed' fill='%2300AEFF'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: calc(100% - 1.5rem);
+	font-size: 1.8rem;
+	line-height: 1;
+	outline: none;
+	border: none;
+	border-radius: 0rem;
+	padding-top: 1.6rem;
+	padding-right: 3rem;
+	padding-bottom: 1.6rem;
+	background-color: transparent;
+
+	&:focus {
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg width='8px' height='5px' viewBox='0 0 8 5' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3Eicon-dropdown_opened%3C/title%3E%3Cg id='Symbols' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cpath d='M4.45139817,0.199665689 L7.87330218,4.13573208 C8.07274715,4.36514489 8.03232662,4.69990138 7.78302042,4.88343163 C7.68051835,4.95888996 7.55316007,5 7.42189337,5 L0.578085343,5 C0.258817624,5 0,4.76183473 0,4.46804299 C0,4.34725072 0.04467487,4.230055 0.126676529,4.13573208 L3.54858054,0.199665689 C3.74802551,-0.029747121 4.1118102,-0.0669422866 4.36111641,0.116587961 C4.39445153,0.141128076 4.42473007,0.168990546 4.45139817,0.199665689 Z' id='icon-dropdown_opened' fill='%2300AEFF'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+	}
+
+	&_dark {
+		@extend %lnd-select;
+		color: $color-grey;
+		box-shadow: inset 0 -0.2rem 0 0 $color-grey-light;
+	}
+
+	&_light {
+		@extend %lnd-select;
+		color: $color-grey-light;
+		box-shadow: inset 0 -0.2rem 0 0 $color-grey-lightest;
+	}
+}
