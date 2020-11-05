@@ -1,0 +1,127 @@
+// Player setion styles
+
+.lnd-player {
+	background-color: white;
+
+	// Sound wave
+	&__sound-wave {
+		position: relative;
+		display: flex;
+		margin-bottom: 1rem;
+		cursor: pointer;
+		&::before {
+			position: absolute;
+			left: 1rem;
+			bottom: 1rem;
+			content: '0:28';
+			padding: 0.75rem;
+			font-size: 1.5rem;
+			font-weight: 600;
+			line-height: 1;
+			text-align: center;
+			color: $color-primary;
+			background-color: white;
+		}
+		&::after {
+			position: absolute;
+			right: 1rem;
+			bottom: 1rem;
+			content: '4:27';
+			padding: 0.75rem;
+			font-size: 1.5rem;
+			font-weight: 600;
+			line-height: 1;
+			text-align: center;
+			color: $color-grey-dark;
+			background-color: white;
+		}
+	}
+
+	&__control {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	// Control buttons
+	&__playback {
+		display: flex;
+		align-items: center;
+	}
+
+	&__prev,
+	&__play,
+	&__pause,
+	&__stop {
+		@extend %button_icon;
+		margin-right: 1.5rem;
+		cursor: pointer;
+	}
+
+	&__next {
+		@extend %button_icon;
+		cursor: pointer;
+	}
+
+	&__icon-prev:hover path,
+	&__icon-play:hover path,
+	&__icon-pause:hover path,
+	&__icon-stop:hover rect,
+	&__icon-next:hover path {
+		fill: $color-primary;
+	}
+
+	// Volume
+	&__volume {
+		display: flex;
+		align-items: center;
+	}
+
+	&__icon-volume {
+		margin-right: 1rem;
+		cursor: pointer;
+
+		&:hover path {
+			fill: $color-primary;
+		}
+	}
+
+	&__pic-volume {
+		cursor: pointer;
+	}
+
+	// Genres
+	&__genres {
+		display: flex;
+		justify-content: space-between;
+		width: 33%;
+	}
+
+	&__pop,
+	&__rock,
+	&__jazz,
+	&__electronic,
+	&__folk,
+	&__classic {
+		font-size: 1.5rem;
+		line-height: 1;
+		font-weight: 600;
+		color: $color-grey-darkest;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		&:hover {
+			color: $color-primary;
+		}
+
+		&.active {
+			@extend %button;
+			background-color: transparent;
+			border: $color-grey-darkest 0.2rem solid;
+			border-radius: $radius;
+			padding: 1.3rem;
+			font-size: 1.5rem;
+			line-height: 1;
+		}
+	}
+}

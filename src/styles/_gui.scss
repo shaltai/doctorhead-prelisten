@@ -297,6 +297,7 @@ $radius: 0.3rem;
 			text-decoration: underline;
 			background-color: transparent;
 			color: $color-primary;
+			border: none;
 		}
 	}
 
@@ -325,6 +326,7 @@ $radius: 0.3rem;
 			text-decoration: underline;
 			background-color: transparent;
 			color: $color-grey-darkest;
+			border: none;
 		}
 		&_blank:hover {
 			color: $color-primary;
@@ -366,6 +368,12 @@ $radius: 0.3rem;
 			color: $color-primary;
 			transition: all 0.5s ease-out;
 		}
+	}
+
+	&_icon {
+		background-color: transparent;
+		padding: 0;
+		border: none;
 	}
 }
 

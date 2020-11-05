@@ -26,14 +26,12 @@
 	}
 
 	&__cards {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		column-gap: 2rem;
+		row-gap: 3rem;
 		width: 100%;
-	}
-
-	&__card {
-		margin-bottom: 3rem;
+		margin-bottom: 4rem;
 	}
 }
 
@@ -55,7 +53,7 @@
 .lnd-card-prelisten {
 	display: flex;
 	flex-wrap: wrap;
-	width: 32%;
+	// width: 32%;
 
 	&__image {
 		width: 9.5rem;
@@ -87,15 +85,12 @@
 
 	&__play,
 	&__delete {
-		background-color: transparent;
-		padding: 0;
-		border: none;
+		@extend %button_icon;
 	}
 
 	&__play {
 		display: flex;
 		flex-wrap: wrap;
-		// align-items: baseline;
 		width: 100%;
 		cursor: pointer;
 	}
