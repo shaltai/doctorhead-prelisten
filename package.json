@@ -38,6 +38,7 @@
 		"imagemin-webp": "^6.0.0"
 	},
 	"dependencies": {
-		"npm-check-updates": "^9.2.3"
+		"npm-check-updates": "^9.2.3",
+		"postcss": "^8.1.4"
 	}
 }
