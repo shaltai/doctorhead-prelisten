@@ -18,11 +18,20 @@
 		display: flex;
 		width: 100%;
 		margin-bottom: 3rem;
+
+		@media (max-width: 414px) {
+			flex-wrap: wrap;
+			justify-content: flex-end;
+		}
 	}
 
 	&__search-input {
 		width: 100%;
 		margin-right: 2rem;
+		@media (max-width: 414px) {
+			margin-right: 0;
+			margin-bottom: 2rem;
+		}
 	}
 
 	&__cards {
@@ -31,7 +40,14 @@
 		column-gap: 2rem;
 		row-gap: 3rem;
 		width: 100%;
-		margin-bottom: 4rem;
+		// margin-bottom: 4rem;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr 1fr;
+		}
+		@media (max-width: 414px) {
+			grid-template-columns: 1fr;
+		}
 	}
 }
 
@@ -86,13 +102,13 @@
 	&__play,
 	&__delete {
 		@extend %button_icon;
+		cursor: pointer;
 	}
 
 	&__play {
 		display: flex;
 		flex-wrap: wrap;
 		width: 100%;
-		cursor: pointer;
 	}
 
 	&__icon-play {

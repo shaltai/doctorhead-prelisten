@@ -274,9 +274,9 @@ $radius: 0.3rem;
 	text-align: center;
 	hyphens: none;
 
-	@media (max-width: 768px) {
-		padding: 1.65rem 3rem;
-	}
+	// @media (max-width: 768px) {
+	// 	padding: 1.65rem 3rem;
+	// }
 
 	&_primary {
 		@extend %button;
@@ -417,6 +417,10 @@ input[type='text'].lnd-input {
 		color: $color-grey-light;
 		border-bottom: 0.2rem solid $color-grey-lightest;
 	}
+}
+
+input[type='text']:focus {
+	outline: none;
 }
 
 input[type='text']:hover.lnd-input {
