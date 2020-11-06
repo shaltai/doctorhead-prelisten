@@ -10,7 +10,8 @@
 		display: flex;
 		margin-bottom: 1rem;
 		cursor: pointer;
-		@media (max-width: 768px) {
+
+		@media (max-width: 1024px) {
 			margin-bottom: 3rem;
 		}
 
@@ -26,10 +27,15 @@
 			text-align: center;
 			color: $color-primary;
 			background-color: white;
+
 			@media (max-width: 768px) {
 				padding: 0.5rem;
 			}
+			@media (max-width: 414px) {
+				left: 1.5rem;
+			}
 		}
+
 		&::after {
 			position: absolute;
 			right: 1rem;
@@ -42,8 +48,12 @@
 			text-align: center;
 			color: $color-grey-dark;
 			background-color: white;
+
 			@media (max-width: 768px) {
 				padding: 0.5rem;
+			}
+			@media (max-width: 414px) {
+				right: 1.5rem;
 			}
 		}
 	}
@@ -51,6 +61,18 @@
 	&__pic-sound-wave {
 		@media (max-width: 768px) {
 			height: 14.5rem;
+		}
+		@media (max-width: 414px) {
+			display: none;
+		}
+	}
+
+	&__pic-sound-wave_mobile {
+		width: 100%;
+		display: none;
+
+		@media (max-width: 414px) {
+			display: flex;
 		}
 	}
 
@@ -65,6 +87,12 @@
 	&__playback {
 		display: flex;
 		align-items: center;
+
+		@media (max-width: 1024px) {
+			width: 30%;
+			justify-content: space-evenly;
+			margin-bottom: 3rem;
+		}
 		@media (max-width: 768px) {
 			width: 100%;
 			justify-content: space-evenly;
@@ -98,14 +126,30 @@
 	&__volume {
 		display: flex;
 		align-items: center;
+
+		@media (max-width: 1024px) {
+			@media (max-width: 1024px) {
+				width: 65%;
+			}
+			margin-bottom: 3rem;
+		}
 		@media (max-width: 768px) {
 			width: 100%;
 			margin-bottom: 2rem;
 		}
 	}
 
-	&__icon-volume {
+	&__icon-volume-min {
 		margin-right: 1rem;
+		cursor: pointer;
+
+		&:hover path {
+			fill: $color-primary;
+		}
+	}
+
+	&__icon-volume-max {
+		margin-left: 1rem;
 		cursor: pointer;
 
 		&:hover path {
@@ -116,7 +160,7 @@
 	&__pic-volume {
 		cursor: pointer;
 
-		@media (max-width: 768px) {
+		@media (max-width: 1024px) {
 			width: 100%;
 		}
 	}
@@ -127,7 +171,7 @@
 		justify-content: space-between;
 		width: 33%;
 
-		@media (max-width: 768px) {
+		@media (max-width: 1024px) {
 			width: 100%;
 			justify-content: space-evenly;
 		}
